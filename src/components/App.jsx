@@ -1,5 +1,5 @@
 
-import React, {useEffect} from "react";
+import React from "react";
 import ContactForm from "./ContactForm";
 import ContactsList from "./ContactsList";
 import Section from "./Section";
@@ -11,13 +11,9 @@ import { addContact, removeContact, setFilter } from 'reducers/phonebook'
 
 export const App = () =>  {
 
-  const {items: contacts, filter} = useSelector(state => state.contacts)
+  const {contacts, filter} = useSelector(state => state)
 
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts))
-  }, [contacts])
 
   const handleAddContact = ({name, number}) => {
 
@@ -60,6 +56,7 @@ export const App = () =>  {
 };
 
 const filterContacts = (contacts, filter) => {
+
     if(!filter) return contacts
     filter = filter.toLowerCase()
     return contacts.filter(({name}) => name.toLowerCase().includes(filter))
