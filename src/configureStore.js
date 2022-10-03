@@ -1,4 +1,4 @@
-import { configureStore, createStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { rootReducer } from 'reducers/phonebook'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
